@@ -1191,10 +1191,34 @@ code {
     
       
       <style type="text/css" media="screen, projection">
-        .bottom-right {
+        div.titleslide {
+    background-position: bottom left;
+}
+.bottom-right {
     position: absolute;
     bottom: 0;
     right: 10px;
+}
+
+.middle-right {
+    position: absolute;
+    right: 10px;
+    top: 406px;
+}
+
+.who-is-casper {
+    position: absolute;
+    right: 10px;
+    top: 92px;
+}
+
+.green {
+    color: #00C33D;
+    font-weight: bold;
+}
+.greenbar {
+    background: #00C33D;
+    font-weight: bold;
 }
 
       </style>
@@ -1654,7 +1678,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              1/17
+              1/30
             </aside>
           </footer>
         </div>
@@ -1668,10 +1692,15 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <header><h1>Sommaire</h1></header>
             
             
-            <section><ul style="padding:50px 0 0 150px;line-height:2em;">
+            <section><p><img src="images/maisonhantee.gif" class="middle-right" style="margin-top:-133px" /></p>
+<p class="warning">
+Cette présentation est composée de beaucoup de code pour faciliter votre démarrage !
+</p>
+
+<ul style="padding:50px 0 0 130px;line-height:2em;">
     <li>Qui est CasperJS ?</li>
     <li>Tester avec CasperJS</li>
-    <li>Quelques outils et concurents</li>
+    <li>Quelques outils et concurrents</li>
 </ul></section>
             
           </div>
@@ -1688,7 +1717,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              2/17
+              2/30
             </aside>
           </footer>
         </div>
@@ -1702,12 +1731,20 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <header><h1>Qui est CasperJS</h1></header>
             
             
-            <section><ul>
-<li>Navigateur headless</li>
-<li>Basé sur webkit (<a href="https://github.com/laurentj/slimerjs">Un projet pour utiliser geko</a>)</li>
-<li>API en JavaScript</li>
+            <section><p><img src="images/who-is-casper.png" class="who-is-casper" /></p>
+<p><strong>Architecture</strong></p>
+<ul>
+<li><strong>CasperJS</strong> pilote <strong>PhantomJS</strong></li>
+<li><strong>PhantomJS</strong> pilote WebKit</li>
+<li><strong>WebKit</strong> : un vrai navigateur !</li>
 </ul>
-<p><img src="images/who-is-casper.png" /></p></section>
+<p><strong>Il sait faire</strong></p>
+<ul>
+<li>des captures d'écran</li>
+<li>exécuter le javascript de la page</li>
+<li>cliquer, soumettre un formulaire</li>
+<li>...</li>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1723,7 +1760,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              3/17
+              3/30
             </aside>
           </footer>
         </div>
@@ -1734,7 +1771,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Le principe</h1></header>
+            <header><h1>Code first</h1></header>
             
             
             <section><div class="highlight"><pre><span class="c1">// Créer un navigateur</span>
@@ -1775,7 +1812,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              4/17
+              4/30
             </aside>
           </footer>
         </div>
@@ -1816,7 +1853,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              5/17
+              5/30
             </aside>
           </footer>
         </div>
@@ -1827,13 +1864,86 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         <div class="slide has_code has_fragements">
           <div class="inner">
             
+            <header><h1>Les sélecteurs</h1></header>
+            
+            
+            <section><p><strong>CSS3</strong></p>
+<div class="highlight"><pre><span class="nx">casper</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">casper</span><span class="p">.</span><span class="nx">getTitle</span><span class="p">(</span><span class="s1">&#39;h3 a:first-child&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<p><strong>XPath</strong></p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;casper&#39;</span><span class="p">).</span><span class="nx">selectXPath</span><span class="p">;</span>
+
+<span class="nx">casper</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">casper</span><span class="p">.</span><span class="nx">getTitle</span><span class="p">(</span><span class="nx">x</span><span class="p">(</span><span class="s1">&#39;//*[@id=&quot;plop&quot;]&#39;</span><span class="p">),);</span>
+<span class="p">});</span>
+</pre></div>
+
+<p class="center">W3C <a href="http://www.w3schools.com/xpath/">XPath tutorial</3>.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/02-qui-est-casper.markdown">./slides/02-qui-est-casper.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/02-qui-est-casper.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Installer CasperJS</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/02-qui-est-casper.markdown">./slides/02-qui-est-casper.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/02-qui-est-casper.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
             <header><h1>Installer CasperJS 1/2</h1></header>
             
             
-            <section><blockquote>
-<p class="warning">Cette partie est à effectuer sur toutes les plateformes</3>
-</blockquote>
-<p>Il suffit de récupérer la dernière version via git :</p>
+            <section><p><strong>Installer phantom</strong></p>
+<p><a href="http://phantomjs.org/download.html">Télécharger l'exécutable</a> pour
+votre plateforme puis ajoutez le au <code>PATH</code> ou à <code>/usr/local/bin</code></p>
+<p><strong>récupérer casper</strong></p>
+<p>Il suffit ensuite de récupérer la dernière version via git :</p>
 <div class="highlight"><pre><span class="nv">$ </span>git clone git://github.com/n1k0/casperjs.git
 <span class="nv">$ </span><span class="nb">cd </span>casperjs
 <span class="nv">$ </span>git checkout tags/1.0.2 <span class="c"># replace with last tag</span>
@@ -1855,7 +1965,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              6/17
+              8/30
             </aside>
           </footer>
         </div>
@@ -1897,7 +2007,7 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              7/17
+              9/30
             </aside>
           </footer>
         </div>
@@ -1925,7 +2035,7 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              8/17
+              10/30
             </aside>
           </footer>
         </div>
@@ -1977,7 +2087,7 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              9/17
+              11/30
             </aside>
           </footer>
         </div>
@@ -2026,7 +2136,7 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              10/17
+              12/30
             </aside>
           </footer>
         </div>
@@ -2034,25 +2144,25 @@ C:&gt; casperjs.bat myscript.js
       
       <!-- slide source: ./slides/02-qui-est-casper.markdown -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_fragements">
           <div class="inner">
             
             <header><h1>L'essentiel</h1></header>
             
             
             <section><ul>
-<li>Contre les pyramides de la mort, une API <code>deffered</code>.</li>
-<li>Exécution dans la page, isolation avec le serveur.</li>
-<li>Sélecteurs CSS3.</li>
+<li>Contre les pyramides de la mort, une API <code>deferred</code>.</li>
+<li>Exécution dans la page.</li>
+<li>Complète isolation avec le serveur.</li>
+<li><a href="http://casperjs.org/selectors.html">Sélecteurs</a> CSS3 ou XPath.</li>
+<li>Fonctions pour la <a href="http://casperjs.org/cli.html">ligne de commande</a>.</li>
+<li>Extensible par des <a href="http://casperjs.org/events-filters.html">évènements</a>.</li>
+<li><a href="http://casperjs.org/api.html#intro">API</a> Javascript.</li>
+<li>Une librairie d'<a href="http://casperjs.org/testing.html">assertions</a>.</li>
 </ul>
-<p><strong>CasperJS peut</strong></p>
-<ul>
-<li>faire des captures d'écran</li>
-<li>exécuter le javascript de la page</li>
-<li>cliquer</li>
-<li>soumettre un formulaire</li>
-<li>...</li>
-</ul></section>
+<blockquote>
+<p class="info">La doc c'est <a href="http://casperjs.org/api.html#intro">par là</3></p>
+</blockquote></section>
             
           </div>
           <div class="presenter_notes">
@@ -2068,7 +2178,7 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              11/17
+              13/30
             </aside>
           </footer>
         </div>
@@ -2076,10 +2186,38 @@ C:&gt; casperjs.bat myscript.js
       
       <!-- slide source: ./slides/02-qui-est-casper.markdown -->
       <div class="slide-wrapper">
-        <div class="slide has_code has_fragements">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Rappels de JavaScript</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/02-qui-est-casper.markdown">./slides/02-qui-est-casper.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/02-qui-est-casper.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Règle indispensables</h1></header>
             
             
             <section><p>On déclare <strong>toujours</strong> ses variables.</p>
@@ -2091,10 +2229,55 @@ C:&gt; casperjs.bat myscript.js
 </pre></div>
 
 <p>Les <code>{</code> sont toujours en fin de ligne</p>
-<div class="highlight"><pre><span class="nx">funciton</span> <span class="nx">foo</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">foo</span> <span class="p">()</span> <span class="p">{</span>
 <span class="p">}</span>
 </pre></div>
 
+<p>Attention au <code>this</code> !</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/02-qui-est-casper.markdown">./slides/02-qui-est-casper.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/02-qui-est-casper.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_fragements">
+          <div class="inner">
+            
+            <header><h1>Ressources JavaScript</h1></header>
+            
+            
+            <section><p><img src="./images/js-logo-badge-256.png" class="middle-right" style="margin-top:-128px;" /></p>
+<p><strong>Tutoriels</strong></p>
+<ul>
+<li><a href="ttp://dailyjs.com/js101.html">dailyjs: JavaScript 101</a></li>
+<li><a href="http://eloquentjavascript.net/">Eloquent javascript</a></li>
+</ul>
+<p><strong>Video</strong></p>
+<ul>
+<li><a href="http://www.youtube.com/watch?v=hQVTIJBZook">Javascript the good parts</a></li>
+</ul>
+<p><strong>Articles</strong></p>
+<ul>
+<li><a href="http://doctrina.org/Javascript-Function-Invocation-Patterns.html">Javascript this</a></li>
+<li><a href="http://markdaggett.com/blog/2013/02/15/functions-explained/">Les fonctions en JS</a></li>
+</ul>
 <blockquote>
 <p class="info">C'est un vrai langage et il faut l'apprendre !</3>
 </blockquote></section>
@@ -2113,7 +2296,7 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              12/17
+              16/30
             </aside>
           </footer>
         </div>
@@ -2141,7 +2324,7 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              13/17
+              17/30
             </aside>
           </footer>
         </div>
@@ -2149,12 +2332,36 @@ C:&gt; casperjs.bat myscript.js
       
       <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Le premier test</h1></header>
             
             
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">casper</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;casper&#39;</span><span class="p">).</span><span class="nx">create</span><span class="p">();</span>
+<span class="nx">casper</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">begin</span><span class="p">(</span><span class="s1">&#39;ITN popup&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">test</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">start</span><span class="p">(</span><span class="s1">&#39;http://www.itnetwork.fr/&#39;</span><span class="p">).</span>
+
+    <span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">test</span><span class="p">.</span><span class="nx">assertVisible</span><span class="p">(</span><span class="s1">&#39;div#overlay&#39;</span><span class="p">);</span>
+        <span class="nx">test</span><span class="p">.</span><span class="nx">assertExists</span><span class="p">(</span><span class="s1">&#39;.skipTeaser&#39;</span><span class="p">);</span>
+    <span class="p">}).</span>
+
+    <span class="nx">thenClick</span><span class="p">(</span><span class="s1">&#39;.skipTeaser&#39;</span><span class="p">).</span>
+
+    <span class="nx">waitWhileVisible</span><span class="p">(</span><span class="s1">&#39;div#overlay&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">test</span><span class="p">.</span><span class="nx">pass</span><span class="p">(</span><span class="s2">&quot;Overlay is hidden.&quot;</span><span class="p">);</span>
+    <span class="p">},</span> <span class="kd">function</span> <span class="nx">onError</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">test</span><span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="s2">&quot;Overlay did not hide.&quot;</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">5000</span><span class="p">).</span> <span class="c1">// 5 seconds</span>
+
+    <span class="nx">run</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">test</span><span class="p">.</span><span class="nx">done</span><span class="p">();</span>
+        <span class="nx">test</span><span class="p">.</span><span class="nx">renderResults</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">});</span> <span class="p">});</span>
+</pre></div>
+</section>
+            
           </div>
           <div class="presenter_notes">
             <header><h1>Notes</h1></header>
@@ -2169,7 +2376,7 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              14/17
+              18/30
             </aside>
           </footer>
         </div>
@@ -2177,11 +2384,27 @@ C:&gt; casperjs.bat myscript.js
       
       <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Les assertions</h1></header>
+            <header><h1>Lancer le premier test</h1></header>
             
+            
+            <section><p><strong>Sous Linux</strong></p>
+<div class="highlight"><pre><span class="nv">$ </span>casperjs itnPopupTest.js
+</pre></div>
+
+<p><strong>Sous Windows</strong></p>
+<div class="highlight"><pre>C:<span class="se">\t</span>ests<span class="se">\&gt;</span> casperjs.bat itnPopupTest.js
+</pre></div>
+
+<p><strong>Résultat</strong></p>
+<div class="highlight test"><pre>
+<span class="green">PASS</span> Selector is visible
+<span class="green">PASS</span> Found an element matching: .skipTeaser
+<span class="green">PASS</span> Overlay is hidden.
+<span class="greenbar">PASS 3 tests executed, 3 passed, 0 failed.     </span>
+</pre></div></section>
             
           </div>
           <div class="presenter_notes">
@@ -2197,7 +2420,56 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              15/17
+              19/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code has_fragements">
+          <div class="inner">
+            
+            <header><h1>Les assertions</h1></header>
+            
+            
+            <section><p>Casper propose une librairie d'assertions</p>
+<div class="highlight"><pre><span class="c1">// simple</span>
+<span class="nx">casper</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">pass</span><span class="p">(</span><span class="s2">&quot;Perfect&quot;</span><span class="p">)</span>
+<span class="nx">casper</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="s2">&quot;Perfect&quot;</span><span class="p">)</span>
+
+<span class="c1">// DOM</span>
+<span class="nx">casper</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">assertVisible</span><span class="p">(</span><span class="s1">&#39;.selector&#39;</span><span class="p">)</span>
+<span class="nx">casper</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">assertSelectorExists</span><span class="p">(</span><span class="s1">&#39;.selector&#39;</span><span class="p">)</span>
+
+<span class="c1">// text</span>
+<span class="nx">casper</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">assertSelectorHasText</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;U rock&#39;</span><span class="p">)</span>
+<span class="nx">casper</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">assertTextDoesntExist</span><span class="p">(</span><span class="s1">&#39;bing&#39;</span><span class="p">,</span> <span class="s1">&#39;body without &quot;bing&quot;&#39;</span><span class="p">);</span>
+
+<span class="c1">// http</span>
+<span class="nx">casper</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">assertHttpStatus</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+
+<blockquote>
+<p class="info">plus sur la <a href="http://casperjs.org/api.html#tester">page dédiée</3></p>
+</blockquote></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/03-tester-avec-casperjs.markdown">./slides/03-tester-avec-casperjs.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/30
             </aside>
           </footer>
         </div>
@@ -2225,7 +2497,351 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              16/17
+              21/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>La configuration</h1></header>
+            
+            
+            <section><p><strong>Lire une variable</strong></p>
+<div class="highlight"><pre><span class="c1">// tests/includes/pre.js</span>
+<span class="kd">var</span> <span class="nx">screenshot</span> <span class="o">=</span> <span class="nx">casper</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;screenshot&#39;</span><span class="p">)</span> <span class="o">||</span>
+                 <span class="s1">&#39;./build/error.png&#39;</span><span class="p">;</span>
+</pre></div>
+
+<p><strong>Capture en cas d'erreur</strong></p>
+<div class="highlight"><pre><span class="c1">// tests/includes/pre.js</span>
+<span class="nx">casper</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="nx">on_error</span><span class="p">(</span><span class="nx">failure</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">casper</span><span class="p">.</span><span class="nx">echo</span><span class="p">(</span><span class="nx">failure</span><span class="p">,</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">);</span>
+    <span class="nx">casper</span><span class="p">.</span><span class="nx">capture</span><span class="p">(</span><span class="nx">screenshot</span><span class="p">);</span>
+    <span class="nx">casper</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/03-tester-avec-casperjs.markdown">./slides/03-tester-avec-casperjs.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Démarrage du navigateur</h1></header>
+            
+            
+            <section><p>Factorisons tout ce qui doit être répété :</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">auth</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;httpuser&quot;</span><span class="p">,</span>
+    <span class="nx">password</span><span class="o">:</span> <span class="s2">&quot;httppassword&quot;</span>
+<span class="p">};</span>
+
+<span class="nx">casper</span><span class="p">.</span><span class="nx">setupAndStart</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">started</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// set viewport</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">viewport</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span><span class="mi">1024</span><span class="p">);</span>
+    <span class="c1">// http authentication</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setHttpAuth</span><span class="p">(</span><span class="nx">auth</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/03-tester-avec-casperjs.markdown">./slides/03-tester-avec-casperjs.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Formulaire d'authentification</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="c1">// tests/includes/pre.js</span>
+<span class="nx">casper</span><span class="p">.</span><span class="nx">signIn</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">signIn</span> <span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">started</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">setupAndStart</span><span class="p">();</span> <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">goTo</span><span class="p">(</span><span class="s1">&#39;https://mysecuresite.io/login&#39;</span><span class="p">)</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;form[/login]&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="nx">username</span><span class="o">:</span> <span class="nx">username</span> <span class="o">||</span> <span class="s2">&quot;demo&quot;</span><span class="p">,</span>
+            <span class="nx">password</span><span class="o">:</span> <span class="nx">password</span> <span class="o">||</span> <span class="s2">&quot;$ecr3t&quot;</span>
+        <span class="p">},</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">assertHttpStatus</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;user has signed in&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="c1">// fluid interface</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/03-tester-avec-casperjs.markdown">./slides/03-tester-avec-casperjs.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Tester une fonctionalité</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="nx">casper</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">begin</span><span class="p">(</span><span class="s1">&#39;Access admin area&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">test</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">casper</span><span class="p">.</span><span class="nx">setupAndStart</span><span class="p">().</span>
+
+    <span class="nx">signIn</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;$ecr3t&quot;</span><span class="p">).</span>
+
+    <span class="nx">thenClick</span><span class="p">(</span><span class="s1">&#39;header nav li&gt;a:contains(&quot;Administration&quot;)&#39;</span><span class="p">).</span>
+
+    <span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;200&quot;</span> <span class="o">!==</span> <span class="k">this</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="kc">true</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// fin du test</span>
+            <span class="nx">test</span><span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="s2">&quot;Accès à l&#39;administration refusé.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nx">test</span><span class="p">.</span><span class="nx">assertTextExists</span><span class="p">(</span><span class="s1">&#39;Bienvenue Démo !&#39;</span><span class="p">);</span>
+    <span class="p">}).</span>
+
+    <span class="nx">run</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">test</span><span class="p">.</span><span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/03-tester-avec-casperjs.markdown">./slides/03-tester-avec-casperjs.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              25/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Lancer les tests</h1></header>
+            
+            
+            <section><p><strong>Directement</strong></p>
+<div class="highlight"><pre><span class="nv">$ </span>casper <span class="nb">test </span>tests/suite --include<span class="o">=</span>tests/include/pre.js <span class="se">\</span>
+        --screenshot<span class="o">=</span>build/error.png
+</pre></div>
+
+<p><strong>Avec un script shell 1/3</strong></p>
+<div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+<span class="nv">SCRIPTPATH</span><span class="o">=</span><span class="sb">`</span>readlink -f <span class="nv">$0</span><span class="sb">`</span>;
+<span class="nv">SCRIPTNAME</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$SCRIPTPATH</span><span class="k">)</span>
+<span class="nv">ROOT_DIR</span><span class="o">=</span><span class="s2">&quot;$(dirname $(dirname $SCRIPTPATH))&quot;</span>
+
+<span class="nv">CASPER_COMMAND</span><span class="o">=</span><span class="s2">&quot;casper tests/suite --include=tests/include/pre.js&quot;</span>
+<span class="nv">XUNIT</span><span class="o">=</span><span class="s2">&quot;build/junit-casper.xml&quot;</span>
+<span class="nv">SHORT_OPT</span><span class="o">=</span><span class="s2">&quot;t:s:xh&quot;</span>
+<span class="nv">LONG_OPT</span><span class="o">=</span><span class="s2">&quot;host:,screenshot:caper-xunit,help&quot;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/03-tester-avec-casperjs.markdown">./slides/03-tester-avec-casperjs.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              26/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Avec un script shell 2/3</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="c"># write usage</span>
+<span class="k">function </span>usage <span class="o">{</span>
+    <span class="nb">printf</span> <span class="s2">&quot;Launch tests\n&quot;</span>
+    <span class="nb">printf</span> <span class="s2">&quot;\n&quot;</span>
+    <span class="nb">printf</span> <span class="s2">&quot;  $SCRIPTNAME --host http://localhost/\n&quot;</span>
+    <span class="nb">printf</span> <span class="s2">&quot;Options\n&quot;</span>
+    <span class="nb">printf</span> <span class="s2">&quot;\t-t --host         : changes host\n&quot;</span>
+    <span class="nb">printf</span> <span class="s2">&quot;\t-s --screenshot   : changes screenshot destination\n&quot;</span>
+    <span class="nb">printf</span> <span class="s2">&quot;\t-x --casper-xunit : output casper tests in xunit format\n&quot;</span>
+    <span class="nb">printf</span> <span class="s2">&quot;\t-h --help         : this help\n&quot;</span>
+<span class="o">}</span>
+
+<span class="c"># parse arguments</span>
+<span class="nv">OPTS</span><span class="o">=</span><span class="k">$(</span> getopt -o <span class="s2">&quot;$SHORT_OPT&quot;</span> -l <span class="s2">&quot;$LONG_OPT&quot;</span> -- <span class="s2">&quot;$@&quot;</span> <span class="k">)</span>
+<span class="k">if</span>  <span class="o">[</span> <span class="nv">$?</span> !<span class="o">=</span> 0 <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span>usage;
+    <span class="nb">exit </span>1;
+<span class="k">fi</span>
+<span class="nb">eval set</span> -- <span class="s2">&quot;$OPTS&quot;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/03-tester-avec-casperjs.markdown">./slides/03-tester-avec-casperjs.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              27/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Avec un script shell 3/3</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="c"># read options</span>
+<span class="k">while </span><span class="nb">true</span> ; <span class="k">do</span>
+<span class="k">    case</span> <span class="s2">&quot;$1&quot;</span> in
+        -t|--host<span class="o">)</span> <span class="nv">HOST</span><span class="o">=</span><span class="s2">&quot;$2&quot;</span>
+            shift2;;
+        -s|--screenshot<span class="o">)</span> <span class="nv">SCREENSHOT</span><span class="o">=</span><span class="s2">&quot;$2&quot;</span>
+            shift2;;
+        -h|--help<span class="o">)</span> usage
+            <span class="nb">exit </span>0;;
+        -x|--casper-xunit<span class="o">)</span>
+            <span class="nv">CASPER_COMMAND</span><span class="o">=</span><span class="s2">&quot;$CASPER_COMMAND --xunit=$XUNIT&quot;</span>
+            shift2;;
+        --<span class="o">)</span> <span class="nb">shift</span>
+<span class="nb">            break</span>;;
+    <span class="k">esac</span>
+<span class="k">done</span>
+
+<span class="c"># extend comand with options</span>
+<span class="nv">CASPER_COMMAND</span><span class="o">=</span><span class="s2">&quot;$CASPER_COMMAND --host=$HOST&quot;</span>
+<span class="nv">CASPER_COMMAND</span><span class="o">=</span><span class="s2">&quot;$CASPER_COMMAND --screenshot=$ERROR&quot;</span>
+<span class="nv">$CASPER_COMMAND</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/03-tester-avec-casperjs.markdown">./slides/03-tester-avec-casperjs.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              28/30
             </aside>
           </footer>
         </div>
@@ -2237,6 +2853,57 @@ C:&gt; casperjs.bat myscript.js
           <div class="inner">
             
             <header><h1>Que tester ?</h1></header>
+            
+            
+            <section><ul>
+<li>Des scenarios / User stories</li>
+</ul>
+<pre>
+    En tant qu'administrateur,
+    Quand je clique sur Administration
+    Le panneau d'administration est affiché
+
+    Quand je clique sur "Utilisateur"
+    La liste des utilisateurs est affichée
+
+    Quand je clique sur nouveau
+    Un formulaire apparait
+
+    Quand je soumets ce formulaire avec des données valides
+    La liste des utilisateurs est affichée
+</pre>
+
+<ul>
+<li>Que toutes les pages s'affichent correctement</li>
+<li>Faire des screenshots pour voir les erreurs</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./slides/03-tester-avec-casperjs.markdown">./slides/03-tester-avec-casperjs.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              29/30
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./slides/03-tester-avec-casperjs.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Comment écrire ses sélecteurs ?</h1></header>
             
             
           </div>
@@ -2253,7 +2920,7 @@ C:&gt; casperjs.bat myscript.js
             </aside>
             
             <aside class="page_number">
-              17/17
+              30/30
             </aside>
           </footer>
         </div>
@@ -2287,7 +2954,7 @@ C:&gt; casperjs.bat myscript.js
       
       
       <tr id="toc-row-4">
-        <th><a href="#slide4">Le principe</a></th>
+        <th><a href="#slide4">Code first</a></th>
         <td><a href="#slide4">4</a></td>
       </tr>
       
@@ -2299,74 +2966,152 @@ C:&gt; casperjs.bat myscript.js
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">Installer CasperJS 1/2</a></th>
+        <th><a href="#slide6">Les sélecteurs</a></th>
         <td><a href="#slide6">6</a></td>
       </tr>
       
       
       <tr id="toc-row-7">
-        <th><a href="#slide7">Installer CasperJS 2/2</a></th>
+        <th><a href="#slide7">Installer CasperJS</a></th>
         <td><a href="#slide7">7</a></td>
       </tr>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">Programmation asynchrone</a></th>
+        <th><a href="#slide8">Installer CasperJS 1/2</a></th>
         <td><a href="#slide8">8</a></td>
       </tr>
       
       
       <tr id="toc-row-9">
-        <th><a href="#slide9">Client / serveur</a></th>
+        <th><a href="#slide9">Installer CasperJS 2/2</a></th>
         <td><a href="#slide9">9</a></td>
       </tr>
       
       
       <tr id="toc-row-10">
-        <th><a href="#slide10">Action interne à la page</a></th>
+        <th><a href="#slide10">Programmation asynchrone</a></th>
         <td><a href="#slide10">10</a></td>
       </tr>
       
       
       <tr id="toc-row-11">
-        <th><a href="#slide11">L'essentiel</a></th>
+        <th><a href="#slide11">Client / serveur</a></th>
         <td><a href="#slide11">11</a></td>
       </tr>
       
       
       <tr id="toc-row-12">
-        <th><a href="#slide12">Rappels de JavaScript</a></th>
+        <th><a href="#slide12">Action interne à la page</a></th>
         <td><a href="#slide12">12</a></td>
       </tr>
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">Tester avec CasperJS</a></th>
+        <th><a href="#slide13">L'essentiel</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">Le premier test</a></th>
+        <th><a href="#slide14">Rappels de JavaScript</a></th>
         <td><a href="#slide14">14</a></td>
       </tr>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">Les assertions</a></th>
+        <th><a href="#slide15">Règle indispensables</a></th>
         <td><a href="#slide15">15</a></td>
       </tr>
       
       
       <tr id="toc-row-16">
-        <th><a href="#slide16">Organiser sa suite de tests</a></th>
+        <th><a href="#slide16">Ressources JavaScript</a></th>
         <td><a href="#slide16">16</a></td>
       </tr>
       
       
       <tr id="toc-row-17">
-        <th><a href="#slide17">Que tester ?</a></th>
+        <th><a href="#slide17">Tester avec CasperJS</a></th>
         <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Le premier test</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Lancer le premier test</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Les assertions</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-21">
+        <th><a href="#slide21">Organiser sa suite de tests</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-22">
+        <th><a href="#slide22">La configuration</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-23">
+        <th><a href="#slide23">Démarrage du navigateur</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-24">
+        <th><a href="#slide24">Formulaire d'authentification</a></th>
+        <td><a href="#slide24">24</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-25">
+        <th><a href="#slide25">Tester une fonctionalité</a></th>
+        <td><a href="#slide25">25</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-26">
+        <th><a href="#slide26">Lancer les tests</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-27">
+        <th><a href="#slide27">Avec un script shell 2/3</a></th>
+        <td><a href="#slide27">27</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-28">
+        <th><a href="#slide28">Avec un script shell 3/3</a></th>
+        <td><a href="#slide28">28</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-29">
+        <th><a href="#slide29">Que tester ?</a></th>
+        <td><a href="#slide29">29</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-30">
+        <th><a href="#slide30">Comment écrire ses sélecteurs ?</a></th>
+        <td><a href="#slide30">30</a></td>
       </tr>
       
       
