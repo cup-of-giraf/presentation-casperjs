@@ -1,9 +1,24 @@
-
-var screenshot = sanitize_screenshot(casper.cli.get('screenshot'))
+var host = sanitize_host(casper.cli.get('host'));
+var screenshot = sanitize_screenshot(casper.cli.get('screenshot'));
 var auth = sanitize_auth(casper.cli.get('auth'));
 
 function usage() {
-    casper.echo('casperjs test suite --screenshot=scree.png --auth="foo:bar"');
+
+    casper.
+        echo(bold('Sample test suite help')).
+        echo('').
+        echo('casperjs test suite --screenshot=screen.png --auth="foo:bar"').
+        echo('').
+        echo(['\t', bold('--screenshot'), '    path to store error screenshot'].join('')).
+        echo(['\t', bold('--auth'), '          http authentication ("user:password")'].join('')).
+        echo(['\t', bold('--host'), '          test host (default: http://localhost/)'].join('')).
+        echo(['\t', bold('--help'), '          display this help'].join('')).
+        echo('');
+}
+
+if (casper.cli.has('help')) {
+    usage();
+    casper.exit(0);
 }
 
 // tests/includes/pre.js
@@ -49,14 +64,42 @@ casper.signIn = function signIn (username, password) {
     return this;
 }
 
+function sanitize_host(host) {
+    var urlReg = /^(.*[^\/])\/?$/;
+    host || (host = 'http://localhost/');
+    if (!urlReg.test(host)) {
+        usage();
+        casper.exit(1);
+    }
+
+    return urlReg.exec(host)[1];
+}
 
 function sanitize_screenshot(screenshot) {
-    return screenshot || './ressources/error.png';
+    screenshot || (screenshot = './ressources/error.png');
+    if (screenshot && ! /\.(png)$/i.test(screenshot)) {
+        casper.exit(1);
+    }
+
+    return screenshot;
 }
 
 function sanitize_auth(auth) {
-    return {
-        username: 'httpuser',
-        password: 'httppassword'
+    var authReg = /^([^:]+):([^:]*)$/;
+    if (!auth) { return auth; }
+    if (!authReg.test(auth)) {
+            usage();
+          casper.exit(1);
     }
+
+    auth = authReg.exec(auth);
+
+    return {
+          username: auth[1] || '',
+          password: auth[2] || ''
+    };
+}
+
+function bold(message) {
+    return casper.getColorizer().format(message, {bold:true});
 }
